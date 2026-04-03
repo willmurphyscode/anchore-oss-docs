@@ -39,6 +39,7 @@ tasks:
       - "make lint-fix || true"
       - "uv run pre-commit run end-of-file-fixer --all-files || true"
       - "uv run pre-commit run trailing-whitespace --all-files || true"
+      - "make python:lint-fix"
       - "make validate"
 
   update:
@@ -62,6 +63,7 @@ tasks:
       - "make lint-fix || true"
       - "uv run pre-commit run end-of-file-fixer --all-files || true"
       - "uv run pre-commit run trailing-whitespace --all-files || true"
+      - "make python:lint-fix"
       - "make validate"
 
   update-release-notes:
