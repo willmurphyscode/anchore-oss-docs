@@ -59,28 +59,28 @@ repos:
   #    hooks:
   #      - id: zizmor
 
-  # Stack-specific hooks (delegates to task namespaces)
+  # Stack-specific hooks (check-only -- use `task lint-fix` to auto-fix)
   - repo: local
     hooks:
-      # Hugo/Node stack
-      - id: hugo-lint-fix
-        name: hugo-lint-fix
-        entry: make hugo:lint-fix
+      # Hugo/Node stack (check-only: prettier --check + markdownlint)
+      - id: hugo-format-check
+        name: hugo-format-check
+        entry: make hugo:format-check
         pass_filenames: false
         language: system
         files: \.(md|html|yaml|toml|css|js)$
 
-      # Python stack
-      - id: python-lint-fix
-        name: python-lint-fix
-        entry: make python:lint-fix
+      # Python stack (check-only: ruff check + ruff format --check)
+      - id: python-lint
+        name: python-lint
+        entry: make python:lint
         pass_filenames: false
         language: system
         files: \.py$
 
-      - id: python-format
-        name: python-format
-        entry: make python:format
+      - id: python-format-check
+        name: python-format-check
+        entry: make python:format-check
         pass_filenames: false
         language: system
         files: \.py$

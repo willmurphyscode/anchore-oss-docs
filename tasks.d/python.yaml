@@ -28,6 +28,11 @@ tasks:
     cmds:
       - uv run ruff format
 
+  format-check:
+    desc: Check code formatting without modifying files
+    cmds:
+      - uv run ruff format --check
+
   lint:
     desc: Run code linters
     cmds:

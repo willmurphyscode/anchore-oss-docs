@@ -88,11 +88,17 @@ tasks:
 
   lint-fix:
     desc: Auto-fix linting issues where possible
-    deps:
-      - format
     cmds:
+      # python: format -> fix/infer -> format again (pyrefly may break formatting)
+      - task: python:format
       - task: python:lint-fix
+      - task: python:format
+      # hugo/node: prettier --write + markdownlint --fix
       - task: hugo:lint-fix
+      # universal whitespace fixers (must match what pre-commit checks)
+      # note: --hook-stage push is required because these hooks are configured for pre-push stage
+      - uv run pre-commit run end-of-file-fixer --all-files --hook-stage push || true
+      - uv run pre-commit run trailing-whitespace --all-files --hook-stage push || true
 
   format:
     desc: Format all code

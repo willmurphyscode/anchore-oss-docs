@@ -50,6 +50,11 @@ tasks:
     cmds:
       - npm run lint
 
+  format-check:
+    desc: Check formatting (prettier + markdownlint, no spell/hugo build)
+    cmds:
+      - npm run check-format
+
   lint-fix:
     desc: Auto-fix linting issues where possible
     cmds:
