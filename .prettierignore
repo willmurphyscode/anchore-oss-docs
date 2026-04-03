@@ -19,6 +19,9 @@ yarn.lock
 # Release notes (auto-generated)
 content/docs/releases/*/v*.md
 
+# Generated JSON schema docs (complex HTML-in-markdown that prettier can't handle idempotently)
+content/docs/reference/syft/json/[0-9]*.md
+
 # Binary files
 *.png
 *.jpg
