@@ -99,6 +99,8 @@ tasks:
       # note: --hook-stage push is required because these hooks are configured for pre-push stage
       - uv run pre-commit run end-of-file-fixer --all-files --hook-stage push || true
       - uv run pre-commit run trailing-whitespace --all-files --hook-stage push || true
+      # fail if any files were modified by the fixers above
+      - git diff --exit-code
 
   format:
     desc: Format all code
